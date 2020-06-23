@@ -37,17 +37,17 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer --version
 
 # Add user for laravel application
-RUN groupadd -g 1001 eduardo.judici
-RUN useradd -u 1001 -ms /bin/bash -g eduardo.judici eduardo.judici
+RUN groupadd -g 1000 alexandre
+RUN useradd -u 1000 -ms /bin/bash -g alexandre alexandre
 
 # Copy existing application directory contents
 COPY . /var/www
 
 # Copy existing application directory permissions
-COPY --chown=eduardo.judici:eduardo.judici . /var/www
+COPY --chown=alexandre:alexandre . /var/www
 
-# Change current user to eduardo.judici
-USER eduardo.judici
+# Change current user to alexandre
+USER alexandre
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
